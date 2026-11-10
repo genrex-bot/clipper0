@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cliper0 — Free in-browser video clipper</title>
+  <meta name="description" content="Cut long videos into short clips, right in your browser. Free, no signup, files never leave your device." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top">Cliper<span>0</span></a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-sm" href="#tool">Open tool</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>Turn long videos into<br /><em>short clips</em> — free.</h1>
+      <p class="tag">Upload a video, get a batch of shareable clips in seconds.
+        Runs entirely in your browser — no signup, no uploads, no watermarks.</p>
+      <div class="cta">
+        <a class="btn" href="#tool">Clip a video free</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-bar"><span></span><span></span><span></span></div>
+        <div class="mock-clips">
+          <div class="mock-clip"><b>0:00</b><i>Clip 1 · 30s</i></div>
+          <div class="mock-clip"><b>0:30</b><i>Clip 2 · 30s</i></div>
+          <div class="mock-clip"><b>1:00</b><i>Clip 3 · 30s</i></div>
+          <div class="mock-clip"><b>1:30</b><i>Clip 4 · 30s</i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TOOL ============ -->
+    <section class="tool" id="tool">
+      <h2>Clip your video</h2>
+      <p class="tag">Everything happens on your device. Nothing is uploaded.</p>
+
+      <div class="drop" id="drop">
+        <input type="file" id="file" accept="video/*" hidden />
+        <p class="drop-title">Drop a video here or <button class="link" id="pick">browse files</button></p>
+        <p class="drop-sub">MP4, WebM, MOV · up to ~1&nbsp;GB works smoothly</p>
+      </div>
+
+      <div class="controls" id="controls" hidden>
+        <div class="fileinfo" id="fileinfo"></div>
+        <label>Clip length
+          <select id="clipLen">
+            <option value="15">15 seconds</option>
+            <option value="30" selected>30 seconds</option>
+            <option value="60">60 seconds</option>
+            <option value="90">90 seconds</option>
+          </select>
+        </label>
+        <button class="btn" id="generate">Generate clips</button>
+        <button class="btn ghost" id="reset" hidden>Start over</button>
+        <div class="progress" id="progress" hidden><div id="bar"></div></div>
+        <p class="status" id="status"></p>
+      </div>
+
+      <div class="clips" id="clips"></div>
+    </section>
+
+    <!-- ============ HOW ============ -->
+    <section class="how" id="how">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><b>1 · Upload</b><span>Drop any video in. It stays on your machine — processed by WebAssembly, not a server.</span></li>
+        <li><b>2 · Auto-split</b><span>Pick a clip length (15–90s) and generate a full batch of cuts in one click.</span></li>
+        <li><b>3 · Preview &amp; download</b><span>Watch each clip instantly, then download the ones you like. No watermark, no limit.</span></li>
+      </ol>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="features" id="features">
+      <h2>Built free, kept free</h2>
+      <div class="grid">
+        <div class="card"><b>100% free</b><span>No credits, no trial, no account. The whole tool costs nothing to run because it runs on your computer.</span></div>
+        <div class="card"><b>Private by design</b><span>Your video never touches a server. There is no server. Close the tab and it's gone.</span></div>
+        <div class="card"><b>No watermarks</b><span>Clean exports, every clip, every time — including commercial use.</span></div>
+        <div class="card"><b>Works offline</b><span>After the first run, you can unplug from the internet and keep clipping.</span></div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq" id="faq">
+      <h2>FAQ</h2>
+      <details><summary>Is it really free?</summary><p>Yes — entirely. There's no paid tier. The video engine runs in your browser, so there are no server costs to pass on.</p></details>
+      <details><summary>Do my videos get uploaded anywhere?</summary><p>No. Processing happens locally with WebAssembly. Your file never leaves your device, which also means it works offline.</p></details>
+      <details><summary>Can I paste a YouTube link instead?</summary><p>Not yet. Downloading from YouTube requires a server, and this site is hosted for free as static files. Clip downloaded videos instead — tools like yt-dlp can save them locally first.</p></details>
+      <details><summary>What formats are supported?</summary><p>Anything your browser can read and ffmpeg.wasm can decode — MP4, WebM, MOV and most others. Exports are MP4 (H.264/AAC).</p></details>
+      <details><summary>Why are cut points not frame-exact?</summary><p>For speed, v1 cuts at keyframes (typically within a second). Frame-accurate re-encoding is on the roadmap.</p></details>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#top">Cliper<span>0</span></a>
+    <p>Free, open-source, browser-based video clipping. Hosted on GitHub Pages.</p>
+  </footer>
+
+  <!-- Wrapper vendored locally: browsers block cross-origin Workers, so the
+       ffmpeg wrapper + its worker chunk must be same-origin as the page. -->
+  <script src="vendor/ffmpeg.js"></script>
+  <script src="vendor/ffmpeg-util.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
