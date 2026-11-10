@@ -16,10 +16,11 @@ Open `index.html` in a browser, or serve the folder:
 ```sh
 npx serve .
 ```
-'''bash
+
+```bash
 git clone https://github.com/genrex-bot/clipper0.git
 cd clipper0
-'''
+```
 
 ## Known limits (v1)
 
