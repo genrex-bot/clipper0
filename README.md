@@ -13,13 +13,13 @@ No server, no accounts, no watermarks — your videos never leave your device.
 
 Open `index.html` in a browser, or serve the folder:
 
-```sh
-npx serve .
-```
-
 ```bash
 git clone https://github.com/genrex-bot/clipper0.git
 cd clipper0
+```
+
+```sh
+npx serve .
 ```
 
 ## Known limits (v1)
