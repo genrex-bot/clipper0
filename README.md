@@ -17,14 +17,6 @@ Open `index.html` in a browser, or serve the folder:
 npx serve .
 ```
 
-## Deploy (GitHub Pages)
-
-1. Push this repo to GitHub.
-2. Repo **Settings → Pages → Source: Deploy from a branch** → `main` / root.
-3. Site appears at `https://<user>.github.io/<repo>/`.
-
-No build, no workflow file needed.
-
 ## Known limits (v1)
 
 - Cuts snap to keyframes (`-c copy`) — accurate to ~1s, not frame-exact.
