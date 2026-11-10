@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cliper0 — Free in-browser video clipper</title>
   <meta name="description" content="Cut long videos into short clips, right in your browser. Free, no signup, files never leave your device." />
+  <!-- CSP via meta: GitHub Pages can't set response headers. frame-ancestors,
+       HSTS and X-Content-Type-Options can't go in a meta tag (ceiling: move to
+       Netlify/Cloudflare Pages with a _headers file if these ever matter). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://unpkg.com blob: 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; connect-src 'self' https://unpkg.com blob:; media-src 'self' blob:; img-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="no-referrer" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
